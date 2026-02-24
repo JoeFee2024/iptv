@@ -1,0 +1,16 @@
+ {
+    "movies": [
+      {
+        "id": 1,
+        "title": "测试剧集",
+        "description": "测试VIP剧集",
+        "cardImageUrl": "...",
+        "backgroundImageUrl": "...",
+        "videoUrl": "base_url.mp4",
+        "episodeCount": 3,
+        "episodeUrls": ["ep1.mp4", "ep2.m3u8", "ep3.mp4"],
+        "isVip": false,
+        "episodeIsVip": [false, true, true]  // 每个剧集单独控制 VIP 状态
+      }
+    ]
+  }
