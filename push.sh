@@ -1,4 +1,4 @@
-cd ~/Desktop/IPTV/iptv-api/gitee || exit
+cd /Users/lk/Desktop/pythonProject/gitee || exit
 
 d=$(date +"%Y-%m-%d %H:%M:%S")
 
