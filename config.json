@@ -1,7 +1,8 @@
  {
-    "vipServiceUrl": "https://jx.2s0.cn/player/analysis.php?v=",
+    "vipServiceUrl": "https://jx.hls.one/?url=",
     "backupVipServices": [
      "https://jx.789jiexi.net:4433/?url=",
-     "https://jx.xmflv.cc/?url="
+     "https://jx.xmflv.cc/?url=",
+      "https://jx.2s0.cn/player/analysis.php?v="
    ]
   }
