@@ -1,6 +1,7 @@
  {
-    "vipServiceUrl": "https://jx.xmflv.com/?url=",
+    "vipServiceUrl": "https://jx.playerjy.com/?url=",
     "backupVipServices": [
+      "https://jx.xmflv.com/?url=",
       "https://jx.789jiexi.net:4433/?url=",
       "https://jx.xmflv.cc/?url=",
       "https://jx.playerjy.com/?url=",
