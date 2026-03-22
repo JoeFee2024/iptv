@@ -1,5 +1,7 @@
 cd /Users/lk/Desktop/pythonProject/gitee || exit
 
+git pull
+
 d=$(date +"%Y-%m-%d %H:%M:%S")
 
 base64 raw_vmess_urls.txt > vmess_urls.txt
