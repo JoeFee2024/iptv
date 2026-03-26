@@ -1,0 +1,72 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+proxies:
+  - name: geph
+    type: socks5
+    server: 127.0.0.1
+    port: 9909
+
+proxy-groups:
+  - name: 自动选择
+    type: url-test
+    proxies:
+      - DIRECT
+      - geph
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+
+  - name: 手动选择
+    type: select
+    proxies:
+      - DIRECT
+      - 自动选择
+      - geph
+
+rules:
+  # 私有网络直连
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
+
+  # 国内常见域名直连
+  - DOMAIN-SUFFIX,cdn77.com,DIRECT
+  - DOMAIN-SUFFIX,cdn77.org,DIRECT
+  - DOMAIN-SUFFIX,vuejs.org,DIRECT
+  - DOMAIN-SUFFIX,netlify.app,DIRECT
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - DOMAIN-SUFFIX,com.cn,DIRECT
+  - DOMAIN-SUFFIX,net.cn,DIRECT
+  - DOMAIN-SUFFIX,org.cn,DIRECT
+  - DOMAIN-SUFFIX,edu.cn,DIRECT
+  - DOMAIN-SUFFIX,gov.cn,DIRECT
+  - DOMAIN-KEYWORD,baidu,DIRECT
+  - DOMAIN-KEYWORD,taobao,DIRECT
+  - DOMAIN-KEYWORD,tmall,DIRECT
+  - DOMAIN-KEYWORD,alipay,DIRECT
+  - DOMAIN-KEYWORD,aliyun,DIRECT
+  - DOMAIN-KEYWORD,alibaba,DIRECT
+  - DOMAIN-KEYWORD,qq,DIRECT
+  - DOMAIN-KEYWORD,weixin,DIRECT
+  - DOMAIN-KEYWORD,wechat,DIRECT
+  - DOMAIN-KEYWORD,bilibili,DIRECT
+  - DOMAIN-KEYWORD,163,DIRECT
+  - DOMAIN-KEYWORD,126,DIRECT
+  - DOMAIN-KEYWORD,jd,DIRECT
+  - DOMAIN-KEYWORD,douyin,DIRECT
+  - DOMAIN-KEYWORD,tiktokv,DIRECT
+  - DOMAIN-KEYWORD,xiaomi,DIRECT
+  - DOMAIN-KEYWORD,huawei,DIRECT
+  - DOMAIN-KEYWORD,tencent,DIRECT
+
+  # 国内IP直连
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+
+  # 国外流量走代理
+  - MATCH,自动选择
