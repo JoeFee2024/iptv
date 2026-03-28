@@ -2,71 +2,528 @@ mixed-port: 7890
 allow-lan: true
 mode: rule
 log-level: info
-external-controller: 127.0.0.1:9090
-
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.localdomain"
+    - "*.example"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
+    - "*.local"
+    - "*.home.arpa"
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
 proxies:
-  - name: geph
-    type: socks5
-    server: 127.0.0.1
-    port: 9909
-
+  - name: æœªçŸ¥
+    type: ss
+    server: 103.186.154.240
+    port: 38388
+    cipher: aes-256-cfb
+    password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  - name: ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+    type: vless
+    server: 139.196.41.153
+    port: 443
+    uuid: 14b02e2a-8930-4afb-8412-ea4a4954ca5b
+    network: ws
+    servername: ylnhh.cc.cd
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /gs5=6666:6666@47.239.178.125:6666
+      headers:
+        Host: ylnhh.cc.cd
+  - name: ğŸ‡©ğŸ‡ª_DE_å¾·å›½
+    type: vless
+    server: 185.94.29.156
+    port: 4001
+    uuid: 00000000-0000-4000-8000-000000000000
+    network: ws
+    servername: sub.mot.ip-ddns.com
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: sub.mot.ip-ddns.com
+  - name: ğŸ‡¨ğŸ‡³_CN_ä¸­å›½
+    type: vless
+    server: logggg.nammknammknammknammknammkb2.ir
+    port: 443
+    uuid: d4de1f64-bf3c-4d97-9663-0091f8c07359
+    servername: logggg.nammknammknammknammknammkb2.ir
+    tls: true
+    client-fingerprint: random
+    reality-opts:
+      public-key: RravQN06gzsNsm5ojEhZGrxBgLGEpqEThtHEltdjpBk
+      short-id: b3d76d
+  - name: æœªçŸ¥_1
+    type: ss
+    server: 103.186.154.232
+    port: 38388
+    cipher: aes-256-cfb
+    password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  - name: ğŸ‡§ğŸ‡¬_BG_ä¿�åŠ åˆ©äºš
+    type: trojan
+    server: steady-lemming.rooster465.autos
+    port: 443
+    password: IL37892054
+    sni: steady-lemming.rooster465.autos
+    skip-cert-verify: false
+    tls: false
+  - name: ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+    type: vless
+    server: vip1.kaixincloud.top
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    network: ws
+    servername: r.icy.de5.net
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        Host: r.icy.de5.net
+  - name: æœªçŸ¥_2
+    type: ss
+    server: 103.186.154.180
+    port: 38388
+    cipher: aes-256-cfb
+    password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  - name: æœªçŸ¥_3
+    type: ss
+    server: 103.186.154.16
+    port: 38388
+    cipher: aes-256-cfb
+    password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  - name: ğŸ‡©ğŸ‡ª_DE_å¾·å›½_1
+    type: vless
+    server: der.jojack.ru
+    port: 443
+    uuid: c67f81df-34e8-4cb3-ab43-599585775fa9
+    servername: der.jojack.ru
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: xpv3OgIQ4ND_ZaiLxjHk1JsykVAVUY73UkyxPlU8Clc
+      short-id: 695f0df252f9889d
+  - name: ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+    type: vless
+    server: 192.200.160.20
+    port: 443
+    uuid: ee248e40-9468-4ef6-81b7-707a1e47c54a
+    network: ws
+    servername: 639073677243557970.camry-perma.info
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /yaeungws
+      headers:
+        Host: 639073677243557970.camry-perma.info
+  - name: æœªçŸ¥_4
+    type: ss
+    server: 103.186.154.75
+    port: 38388
+    cipher: aes-256-cfb
+    password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  - name: ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¨_SC_å¡�èˆŒå°”
+    type: vless
+    server: pl234.mechvpn.online
+    port: 443
+    uuid: 729764b1-149c-49f2-b170-322544df7b5b
+    servername: pl234.mechvpn.online
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+  - name: ğŸ‡¨ğŸ‡³_CN_ä¸­å›½_1
+    type: trojan
+    server: 58.152.25.253
+    port: 443
+    password: BxceQaOe
+    skip-cert-verify: true
+    tls: false
+  - name: æœªçŸ¥_5
+    type: ss
+    server: 103.186.154.170
+    port: 38388
+    cipher: aes-256-cfb
+    password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  - name: ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+    type: vless
+    server: 45.136.59.44
+    port: 13344
+    uuid: 3fce3b0d-0b92-4e92-9a78-18051dd648b4
+    servername: yahoo.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: DC71RjKr16drr8gqK8QhEuCVLpkbBfUfPb9Far8Jkzo
+      short-id: e2bd9802e29deb
+  - name: ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+    type: vless
+    server: 64.120.89.69
+    port: 20231
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    network: ws
+    servername: r.icy.de5.net
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        Host: r.icy.de5.net
+  - name: ğŸ‡ºğŸ‡¸_US_ç¾�å›½_2
+    type: vless
+    server: 157.254.223.44
+    port: 18959
+    uuid: d0b3e27d-bbfc-4a3b-8e60-6973de8fcefa
+    servername: itunes.apple.com
+    tls: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: -hwVEdgFkvjku8ESuDoAA7id5yGGv_zXBvBW_RdhmHA
+      short-id: d557c6895d014075
+  - name: æœªçŸ¥_6
+    type: ss
+    server: 103.186.154.143
+    port: 38388
+    cipher: aes-256-cfb
+    password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  - name: ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+    type: vless
+    server: 45.145.42.170
+    port: 8005
+    uuid: 00000000-0000-4000-8000-000000000000
+    network: ws
+    servername: sub.mot.ip-ddns.com
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: sub.mot.ip-ddns.com
+  - name: ğŸ‡¨ğŸ‡¿_CZ_æ�·å…‹->ğŸ‡·ğŸ‡º_RU_ä¿„ç½—æ–¯
+    type: vless
+    server: desta.axinode.sbs
+    port: 10965
+    uuid: d1209ffb-c159-48d5-b40d-542ce11fc768
+    servername: deepl.com
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: lHxeD2nYtDb1V7JseV-sUTEuqH6_jie7U_iOARX7cT0
+      short-id: 9f3a7c6d2e8b41af
+  - name: ğŸ‡ªğŸ‡¸_ES_è¥¿ç�­ç‰™
+    type: ss
+    server: 5.188.181.201
+    port: 9011
+    cipher: aes-256-cfb
+    password: M3t2ZEQcMGRWBjRa
+  - name: æœªçŸ¥_7
+    type: ss
+    server: 103.186.154.150
+    port: 38388
+    cipher: aes-256-cfb
+    password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  - name: æœªçŸ¥_8
+    type: ss
+    server: 103.186.154.152
+    port: 38388
+    cipher: aes-256-cfb
+    password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  - name: ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ�³ï¸�_unKnow_æœªçŸ¥
+    type: vless
+    server: 62.60.237.240
+    port: 443
+    uuid: d4de1f64-bf3c-4d97-9663-0091f8c07359
+    servername: logggg.nammknammknammknammknammkb2.ir
+    tls: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: RravQN06gzsNsm5ojEhZGrxBgLGEpqEThtHEltdjpBk
+      short-id: b3d76d
+  - name: ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¬_SG_æ–°åŠ å�¡
+    type: vless
+    server: 47.245.99.66
+    port: 11001
+    uuid: 00000000-0000-4000-8000-000000000000
+    network: ws
+    servername: sub.mot.ip-ddns.com
+    tls: true
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: sub.mot.ip-ddns.com
 proxy-groups:
-  - name: 自动选择
+  - name: ğŸš€ èŠ‚ç‚¹é€‰æ‹©
+    type: select
+    proxies:
+      - â™»ï¸� è‡ªåŠ¨é€‰æ‹©
+      - DIRECT
+      - æœªçŸ¥
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½
+      - æœªçŸ¥_1
+      - ğŸ‡§ğŸ‡¬_BG_ä¿�åŠ åˆ©äºš
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - æœªçŸ¥_2
+      - æœªçŸ¥_3
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - æœªçŸ¥_4
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¨_SC_å¡�èˆŒå°”
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½_1
+      - æœªçŸ¥_5
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_2
+      - æœªçŸ¥_6
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡¨ğŸ‡¿_CZ_æ�·å…‹->ğŸ‡·ğŸ‡º_RU_ä¿„ç½—æ–¯
+      - ğŸ‡ªğŸ‡¸_ES_è¥¿ç�­ç‰™
+      - æœªçŸ¥_7
+      - æœªçŸ¥_8
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ�³ï¸�_unKnow_æœªçŸ¥
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¬_SG_æ–°åŠ å�¡
+  - name: â™»ï¸� è‡ªåŠ¨é€‰æ‹©
     type: url-test
     proxies:
-      - DIRECT
-      - geph
+      - æœªçŸ¥
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½
+      - æœªçŸ¥_1
+      - ğŸ‡§ğŸ‡¬_BG_ä¿�åŠ åˆ©äºš
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - æœªçŸ¥_2
+      - æœªçŸ¥_3
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - æœªçŸ¥_4
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¨_SC_å¡�èˆŒå°”
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½_1
+      - æœªçŸ¥_5
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_2
+      - æœªçŸ¥_6
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡¨ğŸ‡¿_CZ_æ�·å…‹->ğŸ‡·ğŸ‡º_RU_ä¿„ç½—æ–¯
+      - ğŸ‡ªğŸ‡¸_ES_è¥¿ç�­ç‰™
+      - æœªçŸ¥_7
+      - æœªçŸ¥_8
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ�³ï¸�_unKnow_æœªçŸ¥
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¬_SG_æ–°åŠ å�¡
     url: http://www.gstatic.com/generate_204
     interval: 300
-
-  - name: 手动选择
+    tolerance: 50
+  - name: ğŸŒ� å›½å¤–åª’ä½“
+    type: select
+    proxies:
+      - ğŸš€ èŠ‚ç‚¹é€‰æ‹©
+      - â™»ï¸� è‡ªåŠ¨é€‰æ‹©
+      - ğŸ�¯ å…¨ç�ƒç›´è¿�
+      - æœªçŸ¥
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½
+      - æœªçŸ¥_1
+      - ğŸ‡§ğŸ‡¬_BG_ä¿�åŠ åˆ©äºš
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - æœªçŸ¥_2
+      - æœªçŸ¥_3
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - æœªçŸ¥_4
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¨_SC_å¡�èˆŒå°”
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½_1
+      - æœªçŸ¥_5
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_2
+      - æœªçŸ¥_6
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡¨ğŸ‡¿_CZ_æ�·å…‹->ğŸ‡·ğŸ‡º_RU_ä¿„ç½—æ–¯
+      - ğŸ‡ªğŸ‡¸_ES_è¥¿ç�­ç‰™
+      - æœªçŸ¥_7
+      - æœªçŸ¥_8
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ�³ï¸�_unKnow_æœªçŸ¥
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¬_SG_æ–°åŠ å�¡
+  - name: ğŸ“² ç”µæŠ¥ä¿¡æ�¯
+    type: select
+    proxies:
+      - ğŸš€ èŠ‚ç‚¹é€‰æ‹©
+      - ğŸ�¯ å…¨ç�ƒç›´è¿�
+      - æœªçŸ¥
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½
+      - æœªçŸ¥_1
+      - ğŸ‡§ğŸ‡¬_BG_ä¿�åŠ åˆ©äºš
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - æœªçŸ¥_2
+      - æœªçŸ¥_3
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - æœªçŸ¥_4
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¨_SC_å¡�èˆŒå°”
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½_1
+      - æœªçŸ¥_5
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_2
+      - æœªçŸ¥_6
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡¨ğŸ‡¿_CZ_æ�·å…‹->ğŸ‡·ğŸ‡º_RU_ä¿„ç½—æ–¯
+      - ğŸ‡ªğŸ‡¸_ES_è¥¿ç�­ç‰™
+      - æœªçŸ¥_7
+      - æœªçŸ¥_8
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ�³ï¸�_unKnow_æœªçŸ¥
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¬_SG_æ–°åŠ å�¡
+  - name: â“‚ï¸� å¾®è½¯æœ�åŠ¡
+    type: select
+    proxies:
+      - ğŸ�¯ å…¨ç�ƒç›´è¿�
+      - ğŸš€ èŠ‚ç‚¹é€‰æ‹©
+      - æœªçŸ¥
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½
+      - æœªçŸ¥_1
+      - ğŸ‡§ğŸ‡¬_BG_ä¿�åŠ åˆ©äºš
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - æœªçŸ¥_2
+      - æœªçŸ¥_3
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - æœªçŸ¥_4
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¨_SC_å¡�èˆŒå°”
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½_1
+      - æœªçŸ¥_5
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_2
+      - æœªçŸ¥_6
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡¨ğŸ‡¿_CZ_æ�·å…‹->ğŸ‡·ğŸ‡º_RU_ä¿„ç½—æ–¯
+      - ğŸ‡ªğŸ‡¸_ES_è¥¿ç�­ç‰™
+      - æœªçŸ¥_7
+      - æœªçŸ¥_8
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ�³ï¸�_unKnow_æœªçŸ¥
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¬_SG_æ–°åŠ å�¡
+  - name: ğŸ�� è‹¹æ�œæœ�åŠ¡
+    type: select
+    proxies:
+      - ğŸš€ èŠ‚ç‚¹é€‰æ‹©
+      - ğŸ�¯ å…¨ç�ƒç›´è¿�
+      - æœªçŸ¥
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½
+      - æœªçŸ¥_1
+      - ğŸ‡§ğŸ‡¬_BG_ä¿�åŠ åˆ©äºš
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - æœªçŸ¥_2
+      - æœªçŸ¥_3
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - æœªçŸ¥_4
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¨_SC_å¡�èˆŒå°”
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½_1
+      - æœªçŸ¥_5
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_2
+      - æœªçŸ¥_6
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡¨ğŸ‡¿_CZ_æ�·å…‹->ğŸ‡·ğŸ‡º_RU_ä¿„ç½—æ–¯
+      - ğŸ‡ªğŸ‡¸_ES_è¥¿ç�­ç‰™
+      - æœªçŸ¥_7
+      - æœªçŸ¥_8
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ�³ï¸�_unKnow_æœªçŸ¥
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¬_SG_æ–°åŠ å�¡
+  - name: ğŸ�¯ å…¨ç�ƒç›´è¿�
     type: select
     proxies:
       - DIRECT
-      - 自动选择
-      - geph
-
-rules:
-  # 私有网络直连
-  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
-  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
-  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
-  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
-  - IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
-
-  # 国内常见域名直连
-  - DOMAIN-SUFFIX,cdn77.com,DIRECT
-  - DOMAIN-SUFFIX,cdn77.org,DIRECT
-  - DOMAIN-SUFFIX,vuejs.org,DIRECT
-  - DOMAIN-SUFFIX,netlify.app,DIRECT
-  - DOMAIN-SUFFIX,cn,DIRECT
-  - DOMAIN-SUFFIX,com.cn,DIRECT
-  - DOMAIN-SUFFIX,net.cn,DIRECT
-  - DOMAIN-SUFFIX,org.cn,DIRECT
-  - DOMAIN-SUFFIX,edu.cn,DIRECT
-  - DOMAIN-SUFFIX,gov.cn,DIRECT
-  - DOMAIN-KEYWORD,baidu,DIRECT
-  - DOMAIN-KEYWORD,taobao,DIRECT
-  - DOMAIN-KEYWORD,tmall,DIRECT
-  - DOMAIN-KEYWORD,alipay,DIRECT
-  - DOMAIN-KEYWORD,aliyun,DIRECT
-  - DOMAIN-KEYWORD,alibaba,DIRECT
-  - DOMAIN-KEYWORD,qq,DIRECT
-  - DOMAIN-KEYWORD,weixin,DIRECT
-  - DOMAIN-KEYWORD,wechat,DIRECT
-  - DOMAIN-KEYWORD,bilibili,DIRECT
-  - DOMAIN-KEYWORD,163,DIRECT
-  - DOMAIN-KEYWORD,126,DIRECT
-  - DOMAIN-KEYWORD,jd,DIRECT
-  - DOMAIN-KEYWORD,douyin,DIRECT
-  - DOMAIN-KEYWORD,tiktokv,DIRECT
-  - DOMAIN-KEYWORD,xiaomi,DIRECT
-  - DOMAIN-KEYWORD,huawei,DIRECT
-  - DOMAIN-KEYWORD,tencent,DIRECT
-
-  # 国内IP直连
-  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT
-
-  # 国外流量走代理
-  - MATCH,自动选择
+      - ğŸš€ èŠ‚ç‚¹é€‰æ‹©
+      - â™»ï¸� è‡ªåŠ¨é€‰æ‹©
+  - name: ğŸ›‘ å…¨ç�ƒæ‹¦æˆª
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: ğŸ�ƒ åº”ç”¨å‡€åŒ–
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: ğŸ�Ÿ æ¼�ç½‘ä¹‹é±¼
+    type: select
+    proxies:
+      - ğŸš€ èŠ‚ç‚¹é€‰æ‹©
+      - ğŸ�¯ å…¨ç�ƒç›´è¿�
+      - â™»ï¸� è‡ªåŠ¨é€‰æ‹©
+      - æœªçŸ¥
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½
+      - æœªçŸ¥_1
+      - ğŸ‡§ğŸ‡¬_BG_ä¿�åŠ åˆ©äºš
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - æœªçŸ¥_2
+      - æœªçŸ¥_3
+      - ğŸ‡©ğŸ‡ª_DE_å¾·å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - æœªçŸ¥_4
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¨_SC_å¡�èˆŒå°”
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½_1
+      - æœªçŸ¥_5
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½_2
+      - æœªçŸ¥_6
+      - ğŸ‡³ğŸ‡±_NL_è�·å…°->ğŸ‡ºğŸ‡¸_US_ç¾�å›½_1
+      - ğŸ‡¨ğŸ‡¿_CZ_æ�·å…‹->ğŸ‡·ğŸ‡º_RU_ä¿„ç½—æ–¯
+      - ğŸ‡ªğŸ‡¸_ES_è¥¿ç�­ç‰™
+      - æœªçŸ¥_7
+      - æœªçŸ¥_8
+      - ğŸ‡¨ğŸ‡³_CN_ä¸­å›½->ğŸ�³ï¸�_unKnow_æœªçŸ¥
+      - ğŸ‡ºğŸ‡¸_US_ç¾�å›½->ğŸ‡¸ğŸ‡¬_SG_æ–°åŠ å�¡
